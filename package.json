@@ -4,7 +4,8 @@
   "description": "FSFE or somethin'",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start:dev": "NODE_ENV=DEV node app.js"
   },
   "author": "Billy",
   "license": "MIT",

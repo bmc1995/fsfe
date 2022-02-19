@@ -31,7 +31,7 @@ function handleQuery(query, cb) {
 let cc = 0;
 
 wss.on('connection', function connection(ws, req) {
-  const ip = req.headers['x-forwarded-for'].split(',')[0].trim();
+  const ip = process.env.NODE_ENV !== 'DEV' ? req.headers['x-forwarded-for'].split(',')[0].trim() : '127.0.0.1';
   console.log(`${ip} connected.`);
   console.log('client connections: ', ++cc);
   
@@ -65,7 +65,7 @@ wss.on('connection', function connection(ws, req) {
     if (cc === 0) {
       clearInterval(pingInterval);
     }
-    console.log('disconnected');
+    console.log(`${ip} disconnected`);
   });
 
   ws.on('error', function error() {
